@@ -10,7 +10,7 @@ export default class TranslationServiceImpl implements TranslationService {
   }> {
     try {
       const headers = {
-        Authorization: `DeepL-Auth-Key ${process.env.DEEPL_TOKEN}`,
+        Authorization: `DeepL-Auth-Key ${process.env.DEEPL_AUTH_KEY}`,
         "Content-Type": "application/json",
       };
 

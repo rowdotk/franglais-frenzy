@@ -13,3 +13,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.game-container {
+  display: grid;
+  margin: 5vh;
+  row-gap: 100%; /* to be verified*/
+}
+
+.dashboard-container {
+  display: flex;
+  justify-content: space-between;
+}
