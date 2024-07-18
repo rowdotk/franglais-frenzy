@@ -17,6 +17,7 @@ class WordRouter {
     const wordController = new WordController(wordServiceImpl);
 
     this.router.route("/").get(wordController.getWord);
+    this.router.route("/optimise-level").post(wordController.optimiseWordLevel);
   }
 
   getRouter(): Router {

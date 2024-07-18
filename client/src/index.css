@@ -14,13 +14,98 @@ code {
     monospace;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=DynaPuff:wght@400;700&display=swap');
 .game-container {
   display: grid;
   margin: 5vh;
   row-gap: 100%; /* to be verified*/
+  font-family: "DynaPuff", system-ui;
+  font-optical-sizing: auto;
+  font-weight: 400; /* Adjust as needed, e.g., 400, 700 */
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  font-size: 1.2rem;
+  justify-content: center;
+  align-content: space-between;
 }
 
 .dashboard-container {
   display: flex;
   justify-content: space-between;
+}
+
+.score-panel {
+  display: grid;
+  justify-items: center;
+}
+
+#score {
+  font-size: 2rem;
+}
+
+.game-round-panel {
+  display: grid;
+  justify-items: center;
+}
+
+#game-round {
+  font-size: 2rem;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap');
+.word {
+  font-family: "Bungee Spice", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 5rem;
+}
+
+.input-cell {
+  border: None;
+  height: 4rem;
+  width: 4rem;
+  background-color: #dcdcdc;
+  border-radius: 1vh;
+  margin: 1vh;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  font-family: "DynaPuff", system-ui;
+  font-size: 3rem;
+  text-align: center;
+}
+
+.input-cell:focus{
+  outline:None
+}
+
+.input {
+  display: flex; 
+}
+
+.word-input-container {
+  justify-content: center;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Spice&display=swap');
+#confirm-button {
+  border: None;
+  background-color: transparent;
+  font-family: "Bungee", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 2rem;
+}
+
+#confirm-button:hover {
+  color:#e3981c;
+  font-size: 2.05rem;
+  cursor:pointer;
+}
+
+#restart-button,#info-button {
+  background-color: transparent;
+  border:none;
+}
+
+#restart-button,#info-button:hover {
+  cursor: pointer;
 }

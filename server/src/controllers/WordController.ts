@@ -1,5 +1,5 @@
 import express, { NextFunction, Request, Response } from "express";
-import Joi from "joi";
+import Joi, { valid } from "joi";
 import WordServiceImpl from "../services/WordServiceImpl.js";
 
 class WordController {
@@ -7,6 +7,12 @@ class WordController {
 
   private getWordSchema = Joi.object().keys({
     difficultyLevel: Joi.number().required().min(1).max(5),
+  });
+
+  private optimiseWordLevelSchema = Joi.object().keys({
+    word: Joi.string().required(),
+    oldDifficultyLevel: Joi.number().required().min(1).max(5),
+    newDifficultyLevel: Joi.number().required().min(1).max(5),
   });
 
   public getWord = async (
@@ -22,6 +28,27 @@ class WordController {
       res.status(200).send(response);
     } catch (error) {
       console.error(`WordController::getWord::error ${error}`);
+      next(error);
+    }
+  };
+
+  public optimiseWordLevel = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<void> => {
+    try {
+      console.log("---req.body", req.body);
+      const validatedBody = await this.optimiseWordLevelSchema.validateAsync(
+        req.body
+      );
+      console.log("---validatedBody", validatedBody);
+      const response = await this.wordServiceImpl.optimiseWordLevel(
+        validatedBody
+      );
+      res.status(200).send(response);
+    } catch (error) {
+      console.error(`WordController::optimiseWordLevel::error ${error}`);
       next(error);
     }
   };

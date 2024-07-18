@@ -8,6 +8,7 @@ const Game: React.FC = (): React.ReactElement => {
   const [hasWonGame, setHasWonGame] = useState<boolean | undefined>(undefined);
 
   return (
+    // TODO: is it a good idea to set states here and pass down to child?
     <div className="game-container">
       <Dashboard
         score={score}
