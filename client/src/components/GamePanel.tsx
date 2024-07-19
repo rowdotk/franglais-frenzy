@@ -76,7 +76,7 @@ const GamePanel: React.FC<Props> = (props: Props): React.ReactElement => {
   const onSubmit = () => {
     let answer = "";
     const inputs = Array.from(
-      document.querySelectorAll(".input-cell")
+      document.querySelectorAll(".InputCell_inputCell__wr89A")
     ) as HTMLInputElement[];
 
     inputs.forEach((input) => {
