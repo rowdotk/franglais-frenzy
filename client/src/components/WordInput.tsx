@@ -6,17 +6,16 @@ interface Props {
   score: number;
   setScore: React.Dispatch<React.SetStateAction<number>>;
   setRound: React.Dispatch<React.SetStateAction<number>>;
-  hasWonGame: boolean | undefined;
+  setIsCorrect: React.Dispatch<React.SetStateAction<boolean | undefined>>;
   setHasWonGame: React.Dispatch<React.SetStateAction<boolean | undefined>>;
 }
 
 const WordInput: React.FC<Props> = (props: Props): React.ReactElement => {
-  const { score, setScore, setRound, hasWonGame, setHasWonGame } = props;
+  const { score, setScore, setRound, setIsCorrect, setHasWonGame } = props;
 
   const [word, setWord] = useState("");
   const [translation, setTranslation] = useState("");
   const [difficultyLevel, setDifficultyLevel] = useState(1);
-  const [focusedCellId, setFocusedCellId] = useState<number>(1);
 
   const fetchWord = async () => {
     const response = await getWord(difficultyLevel);
@@ -26,9 +25,10 @@ const WordInput: React.FC<Props> = (props: Props): React.ReactElement => {
 
   const optimiseLevel = async (isCorrect: boolean) => {
     const newDifficultyLevel = isCorrect
-      ? Math.min(5, difficultyLevel + 1)
-      : Math.max(1, difficultyLevel - 1);
-    if (newDifficultyLevel != difficultyLevel) {
+      ? Math.max(1, difficultyLevel - 1)
+      : Math.min(5, difficultyLevel + 1);
+
+    if (newDifficultyLevel !== difficultyLevel) {
       await optimiseWordLevel({
         word,
         oldDifficultyLevel: difficultyLevel,
@@ -46,17 +46,46 @@ const WordInput: React.FC<Props> = (props: Props): React.ReactElement => {
     }
   };
 
+  const findNextInput = (
+    currentInput: HTMLInputElement
+  ): HTMLInputElement | null => {
+    // TODO: cannot go backwards if there is a symbol
+    const focusInput = document.getElementById(
+      (+currentInput.id + (currentInput.value.length === 0 ? -1 : 1)).toString()
+    ) as HTMLInputElement;
+
+    // if at the end of the input, return null
+    if (!focusInput) {
+      return null;
+    }
+    if (focusInput.disabled) {
+      return findNextInput(focusInput);
+    }
+    return focusInput;
+  };
+
   const onChange = (e: any) => {
-    setFocusedCellId(+e.target.id + 1);
+    const currentInput = e.target;
+    const nextInput = findNextInput(currentInput);
+    if (nextInput) {
+      nextInput!.focus();
+    }
   };
 
   const onSubmit = () => {
-    // TODO: how to get join inputs
-    // const inputValues = Array.from(document.querySelectorAll(".input-cell"));
+    let answer = "";
+    const inputs = Array.from(
+      document.querySelectorAll(".input-cell")
+    ) as HTMLInputElement[];
 
-    // const answer = document.getElementsByTagName("input")[0].value;
-    const answer = translation;
-    const isCorrect = answer === translation;
+    inputs.forEach((input) => {
+      answer += input.value;
+      input.value = "";
+    });
+
+    const isCorrect = answer.toLowerCase() === translation;
+
+    setIsCorrect(isCorrect);
     setScore((prevScore) => (isCorrect ? prevScore + 1 : prevScore - 1));
     setDifficultyLevel((prevDifficultyLevel) =>
       isCorrect
@@ -77,15 +106,18 @@ const WordInput: React.FC<Props> = (props: Props): React.ReactElement => {
   }, [score]);
 
   return (
+    // TODO: move button to the parent but so many states!
+    // TODO: add game stat when game is over
+    // .module.css
+    // TODO: how to start move client and server with one command
     <div>
-      {hasWonGame && <div>WON!!!</div>}
       <div className="word-input-container">
         <div className="word">{word}</div>
         <div className="input">
           {[...Array(translation.length).keys()].map((index) => {
-            const isSymbol = /[^a-z]/.test(translation[index]);
-            const isFirstChar = index === 0;
-            const shouldPrefill = isSymbol || isFirstChar;
+            // Prefill if its the first character or is a symbol
+            const shouldPrefill =
+              index === 0 || /[^a-z]/.test(translation[index]);
             return (
               <InputCell
                 key={index}
@@ -94,8 +126,7 @@ const WordInput: React.FC<Props> = (props: Props): React.ReactElement => {
                 char={
                   shouldPrefill ? translation[index].toUpperCase() : undefined
                 }
-                // why is autofocus not working when state of focusedCellId has changed
-                autoFocus={index === focusedCellId}
+                autoFocus={index === 1}
                 onChange={onChange}
               />
             );

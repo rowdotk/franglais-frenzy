@@ -38,11 +38,9 @@ class WordController {
     next: NextFunction
   ): Promise<void> => {
     try {
-      console.log("---req.body", req.body);
       const validatedBody = await this.optimiseWordLevelSchema.validateAsync(
         req.body
       );
-      console.log("---validatedBody", validatedBody);
       const response = await this.wordServiceImpl.optimiseWordLevel(
         validatedBody
       );

@@ -18,7 +18,7 @@ code {
 .game-container {
   display: grid;
   margin: 5vh;
-  row-gap: 100%; /* to be verified*/
+  grid-row-gap: 10vh;
   font-family: "DynaPuff", system-ui;
   font-optical-sizing: auto;
   font-weight: 400; /* Adjust as needed, e.g., 400, 700 */
@@ -57,7 +57,7 @@ code {
   font-family: "Bungee Spice", sans-serif;
   font-weight: 400;
   font-style: normal;
-  font-size: 5rem;
+  font-size: clamp(1rem, 5rem + 8vw, 5rem);
 }
 
 .input-cell {
@@ -82,11 +82,14 @@ code {
 }
 
 .word-input-container {
+  display: grid;
   justify-content: center;
+  justify-items: center;
+  grid-row-gap: 10vh;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Spice&display=swap');
-#confirm-button {
+#play-again-button, #confirm-button {
   border: None;
   background-color: transparent;
   font-family: "Bungee", sans-serif;
@@ -95,7 +98,11 @@ code {
   font-size: 2rem;
 }
 
-#confirm-button:hover {
+#play-again-button {
+  color: #34cb41;
+}
+
+#play-again-button:hover,#confirm-button:hover {
   color:#e3981c;
   font-size: 2.05rem;
   cursor:pointer;
@@ -106,6 +113,57 @@ code {
   border:none;
 }
 
-#restart-button,#info-button:hover {
+.pop-up {
+  z-index: 99999;
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+#restart-button-image,#info-button-image {
+  width: 80%;
+  height: 80%;
+}
+
+#restart-button-image:hover,#info-button-image:hover {
+  width: 75%;
+  height: 75%;
   cursor: pointer;
+}
+
+.button-groups {
+  display: grid;
+  grid-auto-flow: column;
+}
+
+.game-status-overlay {
+    position: fixed; 
+    display: grid;  
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(240, 238, 238, 0.842); /* Black background with opacity */
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+    cursor: pointer; /* Add a pointer on hover */
+    justify-content:center ;
+    align-items: center;
+}
+
+.game-status-container {
+  display: grid;
+}
+
+#game-status {
+  font-family: "Bungee Spice", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 5rem;
+  z-index: 3;
+  
+
 }

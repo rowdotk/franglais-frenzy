@@ -28,13 +28,12 @@ DEEPL_BASE_URL='https://api-free.deepl.com/v2/translate'
 
 ## Game Mechanics
 
-### Difficulty levels
-
-- Difficulty levels ranging from 1 to 5, the game starts with a level 1 word (easiest). If the player answers correctly, they move to a more difficult word. If they answer incorrectly, they receive an easier word.
+- Difficulty levels range from 1 to 5, the game starts with a level 1 word (easiest). If the player answers correctly, they move to a more difficult word. If they answer incorrectly, they receive an easier word.
 - Each response is logged, adjusting the difficulty level of words based on correctness. Correct answers increase the difficulty, while incorrect answers decrease it. This system ensures that, over time, difficulty levels in the database accurately reflect the challenge each word presents.
 
 ## Future Improvements
 
-better caterogisation of the initial level
-allow translations to different languages
-better crud so that we avoid race conditions with level optimisatin
+-better caterogisation of the initial level
+-allow translations to different languages
+-better crud so that we avoid race conditions with level optimisatin
+-save the translation so that we dont have to call the api everytime
