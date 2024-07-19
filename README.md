@@ -28,13 +28,10 @@ DEEPL_BASE_URL='https://api-free.deepl.com/v2/translate'
 
 ## Game Mechanics
 
-- Difficulty Levels:
-  Starts at level 1 (difficulty ranges from 1 to 5).
-  Correct answers increase difficulty.
-  Incorrect answers decrease difficulty.
-- Dynamic Adjustment:
-  Each response is logged.
-  Difficulty levels adjust over time for accurate ranking in the database.
+### Difficulty levels
+
+- Difficulty levels ranging from 1 to 5, the game starts with a level 1 word (easiest). If the player answers correctly, they move to a more difficult word. If they answer incorrectly, they receive an easier word.
+- Each response is logged, adjusting the difficulty level of words based on correctness. Correct answers increase the difficulty, while incorrect answers decrease it. This system ensures that, over time, difficulty levels in the database accurately reflect the challenge each word presents.
 
 ## Future Improvements
 
