@@ -1,0 +1,50 @@
+
+.dashboardContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.scorePanel {
+  display: grid;
+  justify-items: center;
+  width: 10rem;
+  height: 3rem;
+}
+
+#score {
+  font-size: 2rem;
+}
+
+.gameRoundPanel {
+  display: grid;
+  justify-items: center;
+  width: 10rem;
+  height: 3rem;
+}
+
+#gameRound {
+  font-size: 2rem;
+}
+
+.buttonGroups {
+  display: grid;
+  grid-auto-flow: column;
+  width: 10rem;
+  height: 3rem;
+}
+
+#restartButton,#infoButton {
+  background-color: transparent;
+  border:none;
+}
+
+#restartButtonImage,#infoButtonImage {
+  width: 80%;
+  height: 80%;
+}
+
+#restartButtonImage:hover,#infoButtonImage:hover {
+  width: 75%;
+  height: 75%;
+  cursor: pointer;
+}

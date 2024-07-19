@@ -1,11 +1,12 @@
 import React from "react";
-import "./App.css";
-import Game from "./components/index";
+// import "./App.css";
+import styles from "./App.module.css";
+import GameContainer from "./components/index";
 
 function App() {
   return (
-    <div className="app">
-      <Game />
+    <div className={styles.App}>
+      <GameContainer />
     </div>
   );
 }

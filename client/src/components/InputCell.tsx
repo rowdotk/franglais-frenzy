@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "../styles/InputCell.module.css";
 
 interface Props {
   index: number;
@@ -13,7 +14,7 @@ const InputCell: React.FC<Props> = (props: Props): React.ReactElement => {
   const maxLength = 1;
   return (
     <input
-      className="input-cell"
+      className={styles.inputCell}
       id={index.toString()}
       type="text"
       maxLength={maxLength}

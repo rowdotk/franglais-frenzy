@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "../styles/ScoreChangeCard.module.css";
 
 interface Props {
   isCorrect: boolean | undefined;
@@ -13,7 +14,9 @@ const ScoreChangeCard: React.FC<Props> = (
     return null;
   }
 
-  return <div className="score-change-card">{isCorrect ? "+1" : "-1"}</div>;
+  return (
+    <div className={styles.scoreChangeCard}>{isCorrect ? "+1" : "-1"}</div>
+  );
 };
 
 export default ScoreChangeCard;

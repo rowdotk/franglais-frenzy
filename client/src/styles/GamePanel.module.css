@@ -1,0 +1,32 @@
+
+.wordInputContainer {
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  grid-row-gap: 10vh;
+}
+
+.word {
+  font-family: "Bungee Spice", sans-serif;
+  font-size: 3rem;
+}
+
+.inputContainer {
+  display: flex; 
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Spice&display=swap');
+#confirmButton {
+  border: None;
+  background-color: aqua;
+  font-family: "Bungee", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 2rem;
+}
+
+#confirmButton:hover {
+  color:#e3981c;
+  font-size: 1.95rem;
+  cursor:pointer;
+}

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import Dashboard from "./Dashboard";
-import WordInput from "./WordInput";
+import GamePanel from "./GamePanel";
 import GameStatusOverlay from "./GameStatusOverlay";
+import styles from "../styles/index.module.css";
 
-const Game: React.FC = (): React.ReactElement => {
+const GameContainer: React.FC = (): React.ReactElement => {
   const [score, setScore] = useState(10);
   const [round, setRound] = useState(0);
   const [isCorrect, setIsCorrect] = useState<boolean | undefined>(undefined);
@@ -17,27 +18,26 @@ const Game: React.FC = (): React.ReactElement => {
   };
 
   return (
-    <div>
+    <div className={styles.gameContainer}>
       {typeof hasWonGame !== "undefined" && (
         <GameStatusOverlay hasWonGame={hasWonGame} restartGame={restartGame} />
       )}
-      <div className="game-container">
-        <Dashboard
-          score={score}
-          round={round}
-          isCorrect={isCorrect}
-          restartGame={restartGame}
-        />
-        <WordInput
-          score={score}
-          setScore={setScore}
-          setRound={setRound}
-          setIsCorrect={setIsCorrect}
-          setHasWonGame={setHasWonGame}
-        />
-      </div>
+
+      <Dashboard
+        score={score}
+        round={round}
+        isCorrect={isCorrect}
+        restartGame={restartGame}
+      />
+      <GamePanel
+        score={score}
+        setScore={setScore}
+        setRound={setRound}
+        setIsCorrect={setIsCorrect}
+        setHasWonGame={setHasWonGame}
+      />
     </div>
   );
 };
 
-export default Game;
+export default GameContainer;

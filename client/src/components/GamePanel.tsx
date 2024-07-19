@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getWord, optimiseWordLevel } from "../services/Word.services";
 import InputCell from "./InputCell";
+import styles from "../styles/GamePanel.module.css";
 
 interface Props {
   score: number;
@@ -10,7 +11,7 @@ interface Props {
   setHasWonGame: React.Dispatch<React.SetStateAction<boolean | undefined>>;
 }
 
-const WordInput: React.FC<Props> = (props: Props): React.ReactElement => {
+const GamePanel: React.FC<Props> = (props: Props): React.ReactElement => {
   const { score, setScore, setRound, setIsCorrect, setHasWonGame } = props;
 
   const [word, setWord] = useState("");
@@ -106,14 +107,11 @@ const WordInput: React.FC<Props> = (props: Props): React.ReactElement => {
   }, [score]);
 
   return (
-    // TODO: move button to the parent but so many states!
-    // TODO: add game stat when game is over
-    // .module.css
-    // TODO: how to start move client and server with one command
+    // TODO: button still pushes up the other elements
     <div>
-      <div className="word-input-container">
-        <div className="word">{word}</div>
-        <div className="input">
+      <div className={styles.wordInputContainer}>
+        <div className={styles.word}>{word}</div>
+        <div className={styles.inputContainer}>
           {[...Array(translation.length).keys()].map((index) => {
             // Prefill if its the first character or is a symbol
             const shouldPrefill =
@@ -132,12 +130,12 @@ const WordInput: React.FC<Props> = (props: Props): React.ReactElement => {
             );
           })}
         </div>
+        <button type="submit" id={styles.confirmButton} onClick={onSubmit}>
+          Confirm
+        </button>
       </div>
-      <button type="submit" id="confirm-button" onClick={onSubmit}>
-        Confirm
-      </button>
     </div>
   );
 };
 
-export default WordInput;
+export default GamePanel;

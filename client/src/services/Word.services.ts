@@ -7,9 +7,10 @@ export async function getWord(difficultyLevel: number): Promise<any> {
   //   `http://localhost:3001/api/v1/word?difficultyLevel=${difficultyLevel}`
   // );
 
+  // // intentionally expose answer here for testing purpose
   // console.log("---data", data);
   // return data;
-  return { word: "laitonner", translation: "milk", difficultyLevel: 1 };
+  return { word: "laitonner", translation: "mkds-fmk", difficultyLevel: 1 };
 }
 
 export async function optimiseWordLevel(data: {

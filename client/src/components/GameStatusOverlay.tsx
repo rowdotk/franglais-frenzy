@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "../styles/GameStatusOverlay.module.css";
 
 interface Props {
   hasWonGame: boolean | undefined;
@@ -12,16 +13,18 @@ const GameStatusOverlay: React.FC<Props> = (
 
   return (
     <div
-      className="game-status-overlay"
+      className={styles.gameStatusOverlay}
       style={{
         backgroundColor: hasWonGame
           ? "rgba(240, 238, 238, 0.842)"
           : "rgba(0, 0, 0, 0.842)",
       }}
     >
-      <div className="game-status-container">
-        <div id="game-status">{`YOU HAVE ${hasWonGame ? "WON" : "LOST"}!`}</div>
-        <button type="submit" id="play-again-button" onClick={restartGame}>
+      <div className={styles.gameStatusContainer}>
+        <div id={styles.gameStatus}>{`YOU HAVE ${
+          hasWonGame ? "WON" : "LOST"
+        }!`}</div>
+        <button type="submit" id={styles.playAgainButton} onClick={restartGame}>
           PLAY AGAIN
         </button>
       </div>
