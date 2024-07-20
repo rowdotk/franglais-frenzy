@@ -7,7 +7,7 @@
 .scorePanel {
   display: grid;
   justify-items: center;
-  width: 10rem;
+  width: 6rem;
   height: 3rem;
 }
 
@@ -18,7 +18,7 @@
 .gameRoundPanel {
   display: grid;
   justify-items: center;
-  width: 10rem;
+  width: 6rem;
   height: 3rem;
 }
 
@@ -29,22 +29,25 @@
 .buttonGroups {
   display: grid;
   grid-auto-flow: column;
-  width: 10rem;
+  width: 6rem;
   height: 3rem;
 }
 
-#restartButton,#infoButton {
+#restartButton, #infoButton {
   background-color: transparent;
-  border:none;
+  border: none;
+  padding: 0;
+  margin: 0;
 }
 
-#restartButtonImage,#infoButtonImage {
-  width: 80%;
-  height: 80%;
+#restartButtonImage, #infoButtonImage {
+  width: 95%;
+  height: 95%;
+  object-fit: contain;
 }
 
-#restartButtonImage:hover,#infoButtonImage:hover {
-  width: 75%;
-  height: 75%;
+#restartButtonImage:hover, #infoButtonImage:hover {
+  transform: scale(0.95);
   cursor: pointer;
 }
+

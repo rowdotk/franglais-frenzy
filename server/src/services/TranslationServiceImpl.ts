@@ -18,8 +18,8 @@ export default class TranslationServiceImpl implements TranslationService {
         `${process.env.DEEPL_BASE_URL}`,
         {
           text: [word],
-          target_lang: "EN",
           source_lang: "FR",
+          target_lang: "EN",
         },
         { headers }
       );

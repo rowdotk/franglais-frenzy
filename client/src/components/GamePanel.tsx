@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getWord, optimiseWordLevel } from "../services/Word.services";
 import InputCell from "./InputCell";
 import styles from "../styles/GamePanel.module.css";
+import ErrorCard from "./ErrorCard";
 
 interface Props {
   score: number;
@@ -17,20 +18,30 @@ const GamePanel: React.FC<Props> = (props: Props): React.ReactElement => {
   const [word, setWord] = useState("");
   const [translation, setTranslation] = useState("");
   const [difficultyLevel, setDifficultyLevel] = useState(1);
+  const [hasError, setHasError] = useState(false);
 
   const fetchWord = async () => {
-    const response = await getWord(difficultyLevel);
-    setWord(response.word);
-    setTranslation(response.translation);
+    try {
+      // TODO: prevent same word from being fetched twice
+      const response = await getWord(difficultyLevel);
+      if (!response) {
+        setHasError(true);
+        return;
+      }
+      setWord(response.word);
+      setTranslation(response.translation);
+    } catch (e) {
+      setHasError(true);
+    }
   };
 
-  const optimiseLevel = async (isCorrect: boolean) => {
+  const optimiseLevel = (isCorrect: boolean) => {
     const newDifficultyLevel = isCorrect
       ? Math.max(1, difficultyLevel - 1)
       : Math.min(5, difficultyLevel + 1);
 
     if (newDifficultyLevel !== difficultyLevel) {
-      await optimiseWordLevel({
+      optimiseWordLevel({
         word,
         oldDifficultyLevel: difficultyLevel,
         newDifficultyLevel,
@@ -39,28 +50,28 @@ const GamePanel: React.FC<Props> = (props: Props): React.ReactElement => {
   };
 
   const checkScore = () => {
-    if (score === 20) {
-      setHasWonGame(true);
-    }
-    if (score === 0) {
-      setHasWonGame(false);
+    if (score === 20 || score === 0) {
+      setHasWonGame(score === 20 ? true : false);
     }
   };
 
   const findNextInput = (
-    currentInput: HTMLInputElement
+    currentInput: HTMLInputElement,
+    direction?: "forward" | "backward"
   ): HTMLInputElement | null => {
-    // TODO: cannot go backwards if there is a symbol
+    const type =
+      direction || (currentInput.value.length === 0 ? "backward" : "forward");
+
     const focusInput = document.getElementById(
-      (+currentInput.id + (currentInput.value.length === 0 ? -1 : 1)).toString()
+      (+currentInput.id + (type === "backward" ? -1 : 1)).toString()
     ) as HTMLInputElement;
 
-    // if at the end of the input, return null
+    //if at the end of the input, return null
     if (!focusInput) {
       return null;
     }
     if (focusInput.disabled) {
-      return findNextInput(focusInput);
+      return findNextInput(focusInput, type);
     }
     return focusInput;
   };
@@ -74,16 +85,15 @@ const GamePanel: React.FC<Props> = (props: Props): React.ReactElement => {
   };
 
   const onSubmit = () => {
-    let answer = "";
     const inputs = Array.from(
       document.querySelectorAll(".InputCell_inputCell__wr89A")
     ) as HTMLInputElement[];
 
+    let answer = "";
     inputs.forEach((input) => {
       answer += input.value;
       input.value = "";
     });
-
     const isCorrect = answer.toLowerCase() === translation;
 
     setIsCorrect(isCorrect);
@@ -106,8 +116,11 @@ const GamePanel: React.FC<Props> = (props: Props): React.ReactElement => {
     fetchWord();
   }, [score]);
 
+  if (hasError) {
+    return <ErrorCard />;
+  }
+
   return (
-    // TODO: button still pushes up the other elements
     <div>
       <div className={styles.wordInputContainer}>
         <div className={styles.word}>{word}</div>
@@ -130,9 +143,11 @@ const GamePanel: React.FC<Props> = (props: Props): React.ReactElement => {
             );
           })}
         </div>
-        <button type="submit" id={styles.confirmButton} onClick={onSubmit}>
-          Confirm
-        </button>
+        <div className={styles.buttonContainer}>
+          <button type="submit" id={styles.confirmButton} onClick={onSubmit}>
+            Confirm
+          </button>
+        </div>
       </div>
     </div>
   );

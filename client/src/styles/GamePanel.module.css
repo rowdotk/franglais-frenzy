@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Spice&display=swap');
 
 .wordInputContainer {
   display: grid;
@@ -15,7 +16,11 @@
   display: flex; 
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Spice&display=swap');
+.buttonContainer {
+  width: 10rem;
+  height:2rem;
+}
+
 #confirmButton {
   border: None;
   background-color: transparent;

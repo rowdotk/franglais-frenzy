@@ -25,9 +25,7 @@ const Dashboard: React.FC<Props> = (props: Props): React.ReactElement => {
 
   return (
     // TODO: make it responsive
-    // TODO: cannot remove padding in button
     // TODO: use rem? vh?
-    // TODO: specify client PORT to 3000
     <div className={styles.dashboardContainer}>
       <div className={styles.scorePanel}>
         <div id={styles.scoreLabel}>Score</div>
@@ -40,10 +38,14 @@ const Dashboard: React.FC<Props> = (props: Props): React.ReactElement => {
       </div>
       <div className={styles.buttonGroups}>
         <button id={styles.restartButton} onClick={restartGame}>
-          <img id={styles.restartButtonImage} src={RestartButton} />
+          <img
+            id={styles.restartButtonImage}
+            src={RestartButton}
+            alt="restart-button"
+          />
         </button>
         <button id={styles.infoButton} onClick={restartGame}>
-          <img id={styles.infoButtonImage} src={InfoButton} />
+          <img id={styles.infoButtonImage} src={InfoButton} alt="info-button" />
         </button>
       </div>
     </div>
