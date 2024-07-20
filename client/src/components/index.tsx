@@ -9,12 +9,14 @@ const GameContainer: React.FC = (): React.ReactElement => {
   const [round, setRound] = useState(0);
   const [isCorrect, setIsCorrect] = useState<boolean | undefined>(undefined);
   const [hasWonGame, setHasWonGame] = useState<boolean | undefined>(undefined);
+  const [wordHistory, setWordHistory] = useState<string[]>([]);
 
   const restartGame = () => {
     setScore(10);
     setRound(0);
     setIsCorrect(undefined);
     setHasWonGame(undefined);
+    setWordHistory([]);
   };
 
   return (
@@ -33,6 +35,8 @@ const GameContainer: React.FC = (): React.ReactElement => {
         score={score}
         setScore={setScore}
         setRound={setRound}
+        wordHistory={wordHistory}
+        setWordHistory={setWordHistory}
         setIsCorrect={setIsCorrect}
         setHasWonGame={setHasWonGame}
       />

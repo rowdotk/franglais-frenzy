@@ -1,0 +1,31 @@
+.ruleModal {
+  z-index: 2; 
+  width: 280px;
+  height: 250px;
+  background-color:rgba(240, 238, 238, 0.98);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius :30px;
+  place-content: center;
+  padding:10px;
+  position: absolute; 
+  top: 100%;
+  right: 0;
+
+.closeButton {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border: none;
+  width: 30px;
+  height: 30px;
+  font-size: 20px;
+  line-height: 30px;
+  text-align: center;
+  cursor: pointer;
+  font-family: inherit;
+  background-color: transparent;
+}
+
+.closeButton:hover{
+  font-size: 18px;
+}

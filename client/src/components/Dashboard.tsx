@@ -3,6 +3,7 @@ import RestartButton from "../assets/restart-button.svg";
 import InfoButton from "../assets/info-button.svg";
 import styles from "../styles/Dashboard.module.css";
 import ScoreChangeCard from "./ScoreChangeCard";
+import RuleModal from "./RuleModal";
 
 interface Props {
   score: number;
@@ -15,6 +16,7 @@ const Dashboard: React.FC<Props> = (props: Props): React.ReactElement => {
   const { score, round, isCorrect, restartGame } = props;
 
   const [displayScoreChange, setDisplayScoreChange] = useState(false);
+  const [displayModal, setDisplayModal] = useState(false);
 
   useEffect(() => {
     setDisplayScoreChange(true);
@@ -44,9 +46,15 @@ const Dashboard: React.FC<Props> = (props: Props): React.ReactElement => {
             alt="restart-button"
           />
         </button>
-        <button id={styles.infoButton} onClick={restartGame}>
+        <button
+          id={styles.infoButton}
+          onClick={() => {
+            setDisplayModal(!displayModal);
+          }}
+        >
           <img id={styles.infoButtonImage} src={InfoButton} alt="info-button" />
         </button>
+        {displayModal && <RuleModal setDisplayModal={setDisplayModal} />}
       </div>
     </div>
   );

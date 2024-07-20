@@ -8,12 +8,22 @@ interface Props {
   score: number;
   setScore: React.Dispatch<React.SetStateAction<number>>;
   setRound: React.Dispatch<React.SetStateAction<number>>;
+  wordHistory: string[];
+  setWordHistory: React.Dispatch<React.SetStateAction<string[]>>;
   setIsCorrect: React.Dispatch<React.SetStateAction<boolean | undefined>>;
   setHasWonGame: React.Dispatch<React.SetStateAction<boolean | undefined>>;
 }
 
 const GamePanel: React.FC<Props> = (props: Props): React.ReactElement => {
-  const { score, setScore, setRound, setIsCorrect, setHasWonGame } = props;
+  const {
+    score,
+    setScore,
+    setRound,
+    wordHistory,
+    setWordHistory,
+    setIsCorrect,
+    setHasWonGame,
+  } = props;
 
   const [word, setWord] = useState("");
   const [translation, setTranslation] = useState("");
@@ -22,11 +32,13 @@ const GamePanel: React.FC<Props> = (props: Props): React.ReactElement => {
 
   const fetchWord = async () => {
     try {
-      // TODO: prevent same word from being fetched twice
       const response = await getWord(difficultyLevel);
       if (!response) {
         setHasError(true);
         return;
+      }
+      if (wordHistory.includes(response.word)) {
+        fetchWord();
       }
       setWord(response.word);
       setTranslation(response.translation);
@@ -76,7 +88,7 @@ const GamePanel: React.FC<Props> = (props: Props): React.ReactElement => {
     return focusInput;
   };
 
-  const onChange = (e: any) => {
+  const handleChange = (e: any) => {
     const currentInput = e.target;
     const nextInput = findNextInput(currentInput);
     if (nextInput) {
@@ -84,7 +96,7 @@ const GamePanel: React.FC<Props> = (props: Props): React.ReactElement => {
     }
   };
 
-  const onSubmit = () => {
+  const handleSubmit = () => {
     const inputs = Array.from(
       document.querySelectorAll(".InputCell_inputCell__wr89A")
     ) as HTMLInputElement[];
@@ -104,6 +116,7 @@ const GamePanel: React.FC<Props> = (props: Props): React.ReactElement => {
         : Math.max(1, prevDifficultyLevel - 1)
     );
     setRound((prevRound) => (prevRound += 1));
+    setWordHistory((prevWordHistory) => [...prevWordHistory, word]);
     optimiseLevel(isCorrect);
   };
 
@@ -138,13 +151,17 @@ const GamePanel: React.FC<Props> = (props: Props): React.ReactElement => {
                   shouldPrefill ? translation[index].toUpperCase() : undefined
                 }
                 autoFocus={index === 1}
-                onChange={onChange}
+                handleChange={handleChange}
               />
             );
           })}
         </div>
         <div className={styles.buttonContainer}>
-          <button type="submit" id={styles.confirmButton} onClick={onSubmit}>
+          <button
+            type="submit"
+            id={styles.confirmButton}
+            onClick={handleSubmit}
+          >
             Confirm
           </button>
         </div>

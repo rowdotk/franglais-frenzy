@@ -6,11 +6,11 @@ interface Props {
   char: string | undefined;
   disabled: boolean;
   autoFocus: boolean;
-  onChange: any;
+  handleChange: any;
 }
 
 const InputCell: React.FC<Props> = (props: Props): React.ReactElement => {
-  const { index, char, disabled, autoFocus, onChange } = props;
+  const { index, char, disabled, autoFocus, handleChange } = props;
   const maxLength = 1;
   return (
     <input
@@ -21,7 +21,7 @@ const InputCell: React.FC<Props> = (props: Props): React.ReactElement => {
       disabled={disabled}
       value={char}
       autoFocus={autoFocus}
-      onChange={onChange}
+      onChange={handleChange}
     />
   );
 };
