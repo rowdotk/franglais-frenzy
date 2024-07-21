@@ -1,15 +1,15 @@
 import verbsJson from "../storage/verbs.json";
 import { verbsStorageLocation } from "../utils/constants";
 import TranslationServiceImpl from "./TranslationServiceImpl";
-import { IVerbs } from "./WordService";
+import { IGetWordResponse, IVerbs } from "./WordService";
 import fs from "fs";
 
 export default class WordService {
-  constructor(
-    private readonly translationServiceImpl: TranslationServiceImpl
-  ) {}
+  verbs: IVerbs;
 
-  verbs: IVerbs = verbsJson;
+  constructor(private readonly translationServiceImpl: TranslationServiceImpl) {
+    this.verbs = verbsJson;
+  }
 
   public randomise(max: number): number {
     return Math.floor(Math.random() * max);
@@ -17,12 +17,13 @@ export default class WordService {
 
   public async getWord(difficultyLevel: string): Promise<{
     ok: boolean;
-    data?: { word: string; translation: string; difficultyLevel: number };
+    data?: IGetWordResponse;
+    error?: string;
   }> {
     try {
-      const wordGroupSize = this.verbs[difficultyLevel].length;
+      const levelGroupSize = this.verbs[difficultyLevel].length;
       const selectedWord =
-        this.verbs[difficultyLevel][this.randomise(wordGroupSize)];
+        this.verbs[difficultyLevel][this.randomise(levelGroupSize)];
 
       const {
         data: { translation },
@@ -38,7 +39,7 @@ export default class WordService {
       };
     } catch (error) {
       console.error(`WordServiceImpl::getWord::error ${error}`);
-      return { ok: false };
+      return { ok: false, error: JSON.stringify(error.message || error) };
     }
   }
 
@@ -58,7 +59,7 @@ export default class WordService {
       return { ok: true };
     } catch (error) {
       console.error(`WordServiceImpl::optimiseWordLevel::error ${error}`);
-      return { ok: false }; //TODO: return error
+      return { ok: false, error: JSON.stringify(error.message || error) };
     }
   }
 }

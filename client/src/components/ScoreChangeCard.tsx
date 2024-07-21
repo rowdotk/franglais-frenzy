@@ -10,10 +10,6 @@ const ScoreChangeCard: React.FC<Props> = (
 ): React.ReactElement | null => {
   const { isCorrect } = props;
 
-  if (typeof isCorrect === "undefined") {
-    return null;
-  }
-
   return (
     <div className={styles.scoreChangeCard}>{isCorrect ? "+1" : "-1"}</div>
   );

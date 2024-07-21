@@ -32,7 +32,9 @@ const Dashboard: React.FC<Props> = (props: Props): React.ReactElement => {
       <div className={styles.scorePanel}>
         <div id={styles.scoreLabel}>Score</div>
         <div id={styles.score}>{score}</div>
-        {displayScoreChange && <ScoreChangeCard isCorrect={isCorrect} />}
+        {displayScoreChange && typeof isCorrect !== "undefined" && (
+          <ScoreChangeCard isCorrect={isCorrect} />
+        )}
       </div>
       <div className={styles.gameRoundPanel}>
         <div id={styles.gameRoundLabel}>Round</div>

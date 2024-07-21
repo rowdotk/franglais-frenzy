@@ -1,5 +1,5 @@
-import express, { NextFunction, Request, Response } from "express";
-import Joi, { valid } from "joi";
+import { NextFunction, Request, Response } from "express";
+import Joi from "joi";
 import WordServiceImpl from "../services/WordServiceImpl.js";
 
 class WordController {
