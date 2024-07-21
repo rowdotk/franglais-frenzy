@@ -3,7 +3,7 @@
 ## Initial Setup
 
 1. Install all packages required with `npm install`
-2. Create a `.env` file in the server root directory and include the following keys:
+2. Create a `.env` file in the **server** root directory and include the following keys:
 
 ```
 PORT=3001
@@ -11,7 +11,7 @@ DEEPL_AUTH_KEY=[Please request the key from @rowdotk]
 DEEPL_BASE_URL='https://api-free.deepl.com/v2/translate'
 ```
 
-3. Create a `.env` file in the client root directory and include the following keys:
+3. Create a `.env` file in the **client** root directory and include the following keys:
 
 ```
 REACT_APP_SERVER_URL=http://localhost:3001/api/v1
@@ -19,7 +19,7 @@ REACT_APP_SERVER_URL=http://localhost:3001/api/v1
 
 ## How to run the application locally
 
-- Execute the following command: `npm run dev`
+- Execute the following command in the **server** root folder: `npm run dev`
 - Access http://localhost:3000/ for the game
 
 ## How to play
