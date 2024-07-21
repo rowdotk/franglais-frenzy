@@ -1,6 +1,13 @@
 import axios from "axios";
+import {
+  IGetWordResponse,
+  IOptimiseWordLevelData,
+  IOptimiseWordLevelResponse,
+} from "./Word.interface";
 
-export async function getWord(difficultyLevel: number): Promise<any> {
+export async function getWord(
+  difficultyLevel: number
+): Promise<IGetWordResponse> {
   const {
     data: { data },
   } = await axios.get(
@@ -13,19 +20,17 @@ export async function getWord(difficultyLevel: number): Promise<any> {
 }
 
 // TODO: check types
-export async function optimiseWordLevel(data: {
-  word: string;
-  oldDifficultyLevel: number;
-  newDifficultyLevel: number;
-}): Promise<any> {
+export async function optimiseWordLevel(
+  data: IOptimiseWordLevelData
+): Promise<IOptimiseWordLevelResponse> {
   try {
-    const response = await axios.post(
-      `${process.env.REACT_APP_SERVER_URL}/word/optimise-level`,
+    const response: IOptimiseWordLevelResponse = await axios.post(
+      `${process.env.REACT_APP_SERVER_URL}/word/optimise-levels`,
       data
     );
     return response;
   } catch (e) {
-    console.error(`optimiseWordLevel::Error::`, e);
-    return null;
+    console.error(`optimiseWordLevel::error::`, e);
+    return { ok: false, error: JSON.stringify(e) };
   }
 }

@@ -1,10 +1,14 @@
 import verbsJson from "../storage/verbs.json";
 import { verbsStorageLocation } from "../utils/constants";
 import TranslationServiceImpl from "./TranslationServiceImpl";
-import { IGetWordResponse, IVerbs } from "./WordService";
+import WordService, {
+  IGetWordResponse,
+  IOptimiseWordLevelData,
+  IVerbs,
+} from "./WordService";
 import fs from "fs";
 
-export default class WordService {
+export default class WordServiceImpl implements WordService {
   verbs: IVerbs;
 
   constructor(private readonly translationServiceImpl: TranslationServiceImpl) {
@@ -43,7 +47,7 @@ export default class WordService {
     }
   }
 
-  public async optimiseWordLevel(data: any): Promise<{
+  public async optimiseWordLevel(data: IOptimiseWordLevelData): Promise<{
     ok: boolean;
     error?: string;
   }> {
