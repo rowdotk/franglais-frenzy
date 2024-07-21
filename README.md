@@ -1,4 +1,4 @@
-# FRANGLAIS-FRENZY
+# 🔠 FRANGLAIS-FRENZY
 
 ## Initial Setup
 
@@ -44,9 +44,14 @@ REACT_APP_SERVER_URL=http://localhost:3001/api/v1
 - Enhance CRUD operations to prevent race conditions during level optimization
 - Cache translations to minimize API calls
 - Improve initial level categorization of the verbs
+- Make the app responsive
 - Provide correct answer when the player answers incorrectly
 - Skip level if there are no verbs available for the difficulty level
 - Add tooltips for buttons
 - Allow navigation between inputs with left and right buttons
 
 ## Preview
+![preview](https://github.com/user-attachments/assets/a20b163b-4a88-40c5-a385-6db603ec37ad)
+
+![image](https://github.com/user-attachments/assets/3f12fab3-45f3-46e1-b36e-f5f5b287a1f5)
+
