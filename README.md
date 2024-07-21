@@ -1,9 +1,9 @@
-# FRANGLAIS-FRENZY
+# 🔠 FRANGLAIS-FRENZY
 
 ## Initial Setup
 
 1. Install all packages required with `npm install`
-2. Create a `.env` file in the server root directory and include the following keys:
+2. Create a `.env` file in the **server** root directory and include the following keys:
 
 ```
 PORT=3001
@@ -11,7 +11,7 @@ DEEPL_AUTH_KEY=[Please request the key from @rowdotk]
 DEEPL_BASE_URL='https://api-free.deepl.com/v2/translate'
 ```
 
-3. Create a `.env` file in the client root directory and include the following keys:
+3. Create a `.env` file in the **client** root directory and include the following keys:
 
 ```
 REACT_APP_SERVER_URL=http://localhost:3001/api/v1
@@ -19,7 +19,7 @@ REACT_APP_SERVER_URL=http://localhost:3001/api/v1
 
 ## How to run the application locally
 
-- Execute the following command: `npm run dev`
+- Execute the following command in the **server** root folder: `npm run dev`
 - Access http://localhost:3000/ for the game
 
 ## How to play
@@ -42,11 +42,16 @@ REACT_APP_SERVER_URL=http://localhost:3001/api/v1
 
 - Implement tests
 - Enhance CRUD operations to prevent race conditions during level optimization
-- Cache translations to minimize API calls
+- Save translations to minimize API calls
 - Improve initial level categorization of the verbs
+- Make the app responsive
 - Provide correct answer when the player answers incorrectly
 - Skip level if there are no verbs available for the difficulty level
 - Add tooltips for buttons
 - Allow navigation between inputs with left and right buttons
 
 ## Preview
+![image](https://github.com/user-attachments/assets/2f3cc7bb-ce32-47b1-ab6e-61d097ea23d7)
+
+![image](https://github.com/user-attachments/assets/3f12fab3-45f3-46e1-b36e-f5f5b287a1f5)
+
