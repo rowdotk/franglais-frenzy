@@ -42,7 +42,7 @@ REACT_APP_SERVER_URL=http://localhost:3001/api/v1
 
 - Implement tests
 - Enhance CRUD operations to prevent race conditions during level optimization
-- Cache translations to minimize API calls
+- Save translations to minimize API calls
 - Improve initial level categorization of the verbs
 - Make the app responsive
 - Provide correct answer when the player answers incorrectly
