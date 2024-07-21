@@ -19,7 +19,6 @@ export async function getWord(
   return data;
 }
 
-// TODO: check types
 export async function optimiseWordLevel(
   data: IOptimiseWordLevelData
 ): Promise<IOptimiseWordLevelResponse> {
