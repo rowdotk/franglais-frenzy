@@ -24,7 +24,7 @@ export async function optimiseWordLevel(
 ): Promise<IOptimiseWordLevelResponse> {
   try {
     const response: IOptimiseWordLevelResponse = await axios.post(
-      `${process.env.REACT_APP_SERVER_URL}/word/optimise-levels`,
+      `${process.env.REACT_APP_SERVER_URL}/word/optimise-level`,
       data
     );
     return response;
