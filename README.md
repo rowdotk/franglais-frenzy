@@ -51,7 +51,7 @@ REACT_APP_SERVER_URL=http://localhost:3001/api/v1
 - Allow navigation between inputs with left and right buttons
 
 ## Preview
-![preview](https://github.com/user-attachments/assets/a20b163b-4a88-40c5-a385-6db603ec37ad)
+![image](https://github.com/user-attachments/assets/2f3cc7bb-ce32-47b1-ab6e-61d097ea23d7)
 
 ![image](https://github.com/user-attachments/assets/3f12fab3-45f3-46e1-b36e-f5f5b287a1f5)
 
