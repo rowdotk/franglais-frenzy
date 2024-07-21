@@ -1,5 +1,4 @@
 import React from "react";
-// import "./App.css";
 import styles from "./App.module.css";
 import GameContainer from "./components/index";
 

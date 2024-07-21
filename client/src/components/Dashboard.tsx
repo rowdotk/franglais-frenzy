@@ -26,8 +26,6 @@ const Dashboard: React.FC<Props> = (props: Props): React.ReactElement => {
   }, [score]);
 
   return (
-    // TODO: make it responsive
-    // TODO: use rem? vh?
     <div className={styles.dashboardContainer}>
       <div className={styles.scorePanel}>
         <div id={styles.scoreLabel}>Score</div>
