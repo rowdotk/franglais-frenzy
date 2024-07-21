@@ -2,8 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=DynaPuff:wght@400;700&display=swap');
 .gameContainer {
   display: grid;
-  width: 70vw;
-  height: 90vh;
+  width: 50em;
+  height: auto;
+  justify-content: center;
   font-family: "DynaPuff", system-ui;
   position: absolute;
   top:0;

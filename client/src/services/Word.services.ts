@@ -1,7 +1,6 @@
 import axios from "axios";
 
 export async function getWord(difficultyLevel: number): Promise<any> {
-  // TODO: handle error
   const {
     data: { data },
   } = await axios.get(
@@ -11,8 +10,6 @@ export async function getWord(difficultyLevel: number): Promise<any> {
   // intentionally expose answer here for testing purpose
   console.log("---answer", data);
   return data;
-
-  return { word: "s'empaler", translation: "impale", difficultyLevel: 1 };
 }
 
 // TODO: check types

@@ -20,7 +20,7 @@
 
 #gameStatus {
   font-family: "Bungee Spice", sans-serif;
-  font-size: 5rem;
+  font-size: 5em;
   z-index: 3;
 }
 
@@ -28,12 +28,12 @@
   border: None;
   background-color: transparent;
   font-family: "Bungee", sans-serif;
-  font-size: 2rem;
+  font-size: 2em;
   color: #34cb41;
 }
 
 #playAgainButton:hover {
   color:#e3981c;
-  font-size: 1.95rem;
+  font-size: 1.95em;
   cursor:pointer;
 }

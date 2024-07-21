@@ -2,7 +2,7 @@
 .scoreChangeCard {
   color:#edd512;
   animation: fade-out 2s;
-  font-size: 1.6rem;
+  font-size: 1.6em;
 }
 
 @keyframes fade-out {

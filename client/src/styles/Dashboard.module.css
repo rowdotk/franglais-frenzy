@@ -1,37 +1,41 @@
 
 .dashboardContainer {
   display: flex;
+  width: 50em;
+  height: 5em;
   justify-content: space-between;
+  align-items: center;
 }
 
 .scorePanel {
   display: grid;
   justify-items: center;
-  width: 6rem;
-  height: 3rem;
+  width: 6em;
+  height: 3em;
 }
 
 #score {
-  font-size: 2rem;
+  font-size: 2em;
 }
 
 .gameRoundPanel {
   display: grid;
   justify-items: center;
-  width: 6rem;
-  height: 3rem;
+  width: 6em;
+  height: 3em;
 }
 
 #gameRound {
-  font-size: 2rem;
+  font-size: 2em;
 }
 
 .buttonGroups {
   display: grid;
   grid-auto-flow: column;
-  width: 6rem;
-  height: 3rem;
+  width: 6em;
+  height: auto;
   position: relative;
+  margin: 1em;
 }
 
 #restartButton, #infoButton {

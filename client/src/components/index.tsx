@@ -24,7 +24,6 @@ const GameContainer: React.FC = (): React.ReactElement => {
       {typeof hasWonGame !== "undefined" && (
         <GameStatusOverlay hasWonGame={hasWonGame} restartGame={restartGame} />
       )}
-
       <Dashboard
         score={score}
         round={round}

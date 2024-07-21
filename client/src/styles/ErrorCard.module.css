@@ -3,8 +3,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 70vh;
-  height: 50vh;
+  width: 50em;
+  height: auto;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -15,12 +15,11 @@
 }
 
 #errorIcon {
-  width: 30%; 
+  width: 15%; 
   height: auto;
 }
 
 #errorMessage {
   margin-top: 1.2em; 
   font-size: 1.2em; 
-  
 }

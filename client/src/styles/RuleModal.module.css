@@ -1,12 +1,12 @@
 .ruleModal {
   z-index: 2; 
-  width: 280px;
-  height: 250px;
+  width: 18em;
+  height: 15em;
   background-color:rgba(240, 238, 238, 0.98);
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  border-radius :30px;
+  border-radius: 10%;
   place-content: center;
-  padding:10px;
+  padding: 10%;
   position: absolute; 
   top: 100%;
   right: 0;
@@ -14,13 +14,12 @@
 
 .closeButton {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 6%;
+  right: 6%;
   border: none;
-  width: 30px;
-  height: 30px;
-  font-size: 20px;
-  line-height: 30px;
+  width: 2em;
+  height: 2em;
+  font-size: 1em;
   text-align: center;
   cursor: pointer;
   font-family: inherit;
@@ -28,5 +27,5 @@
 }
 
 .closeButton:hover{
-  font-size: 18px;
+  transform: scale(0.95);
 }

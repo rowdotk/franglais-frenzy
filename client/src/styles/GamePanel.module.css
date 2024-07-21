@@ -2,36 +2,40 @@
 
 .wordInputContainer {
   display: grid;
+  grid-row-gap: 4em;
   justify-content: center;
   justify-items: center;
-  grid-row-gap: 10vh;
+  width: 50em;
+  height: auto;
 }
 
 .word {
   font-family: "Bungee Spice", sans-serif;
-  font-size: 3rem;
+  font-size: 3em;
 }
 
 .inputContainer {
   display: flex; 
+  width: 50em;
+  height: auto;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .buttonContainer {
-  width: 10rem;
-  height:2rem;
+  width: 10em;
+  height:2em;
 }
 
 #confirmButton {
   border: None;
   background-color: transparent;
   font-family: "Bungee", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 2rem;
+  font-size: 2em;
 }
 
 #confirmButton:hover {
   color:#e3981c;
-  font-size: 1.95rem;
+  transform: scale(0.95);
   cursor:pointer;
 }

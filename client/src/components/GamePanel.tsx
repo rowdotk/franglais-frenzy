@@ -139,17 +139,17 @@ const GamePanel: React.FC<Props> = (props: Props): React.ReactElement => {
         <div className={styles.word}>{word}</div>
         <div className={styles.inputContainer}>
           {[...Array(translation.length).keys()].map((index) => {
+            const character = translation[index];
             // Prefill if its the first character or is a symbol
-            const shouldPrefill =
-              index === 0 || /[^a-z]/.test(translation[index]);
+            const shouldPrefill = index === 0 || /[^a-z]/.test(character);
+            const isSpace = character === " ";
             return (
               <InputCell
                 key={index}
                 index={index}
                 disabled={shouldPrefill}
-                char={
-                  shouldPrefill ? translation[index].toUpperCase() : undefined
-                }
+                char={shouldPrefill ? character.toUpperCase() : undefined}
+                isSpace={isSpace}
                 autoFocus={index === 1}
                 handleChange={handleChange}
               />

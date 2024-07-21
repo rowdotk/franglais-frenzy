@@ -4,13 +4,14 @@ import styles from "../styles/InputCell.module.css";
 interface Props {
   index: number;
   char: string | undefined;
+  isSpace: boolean;
   disabled: boolean;
   autoFocus: boolean;
   handleChange: any;
 }
 
 const InputCell: React.FC<Props> = (props: Props): React.ReactElement => {
-  const { index, char, disabled, autoFocus, handleChange } = props;
+  const { index, char, isSpace, disabled, autoFocus, handleChange } = props;
   const maxLength = 1;
   return (
     <input
@@ -22,6 +23,10 @@ const InputCell: React.FC<Props> = (props: Props): React.ReactElement => {
       value={char}
       autoFocus={autoFocus}
       onChange={handleChange}
+      style={{
+        backgroundColor: isSpace ? "transparent" : "#dcdcdc",
+        boxShadow: isSpace ? "None" : "rgba(0, 0, 0, 0.24) 0px 3px 8px",
+      }}
     />
   );
 };
