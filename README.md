@@ -32,9 +32,10 @@ REACT_APP_SERVER_URL=http://localhost:3001/api/v1
   is found, a point is gained
 - If the player reaches 0 points, they lose. If they reach 20 points, they win.
 
-## Game Mechanics
+## Technical Details
 
 - The verbs are stored in a JSON file called `verbs.json` on the server, the difficulty level of each verb is assigned randomly for now.
+  - In real life, storing the verbs in a database will simplify managing performance issues like race conditions and make testing much easier.
 - Difficulty levels range from 1 to 5, the game starts with a level 1 word (easiest). If the player answers correctly, they move to a more difficult word. If they answer incorrectly, they receive an easier word.
 - Each response is logged, adjusting the difficulty level of words based on correctness. Correct answers increase the difficulty, while incorrect answers decrease it. This system ensures that, over time, difficulty levels in the database accurately reflect the challenge each word presents.
 - For testing purpose: the answers are logged in the browser console.
@@ -43,12 +44,16 @@ REACT_APP_SERVER_URL=http://localhost:3001/api/v1
 
 - Implement integration tests
 - Enhance CRUD operations to prevent race conditions during level optimization
-- Save translations to minimize API calls
+- Save or cache translations to minimize API calls
 - Make the app responsive
 - Provide correct answer when the player answers incorrectly
-- Skip level if there are no verbs available for the difficulty level
+- Skip level if there are no verbs available for the difficulty level (eg: if no level 4 words are available, skip to level 5)
 - Add tooltips for buttons
 - Allow navigation between inputs with left and right buttons
+
+## Others
+
+The game took roughly 20 hours to complete.
 
 ## Preview
 
