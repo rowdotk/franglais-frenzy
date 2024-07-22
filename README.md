@@ -21,6 +21,7 @@ REACT_APP_SERVER_URL=http://localhost:3001/api/v1
 
 - Execute the following command in the **server** root folder: `npm run dev`
 - Access http://localhost:3000/ for the game
+- To run tests, execute `npm run test`
 
 ## How to play
 
@@ -40,10 +41,9 @@ REACT_APP_SERVER_URL=http://localhost:3001/api/v1
 
 ## Future Improvements
 
-- Implement tests
+- Implement integration tests
 - Enhance CRUD operations to prevent race conditions during level optimization
 - Save translations to minimize API calls
-- Improve initial level categorization of the verbs
 - Make the app responsive
 - Provide correct answer when the player answers incorrectly
 - Skip level if there are no verbs available for the difficulty level
@@ -51,7 +51,7 @@ REACT_APP_SERVER_URL=http://localhost:3001/api/v1
 - Allow navigation between inputs with left and right buttons
 
 ## Preview
+
 ![image](https://github.com/user-attachments/assets/2f3cc7bb-ce32-47b1-ab6e-61d097ea23d7)
 
 ![image](https://github.com/user-attachments/assets/3f12fab3-45f3-46e1-b36e-f5f5b287a1f5)
-
