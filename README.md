@@ -41,7 +41,7 @@ REACT_APP_SERVER_URL=http://localhost:3001/api/v1
 
 ## Future Improvements
 
-- Implement integration tests
+- Implement integration tests and frontend tests.
 - Store verbs in a database instead of a JSON file, simplify managing performance issues like race conditions and make testing much easier.
 - Save or cache translations to minimize API calls
 - Make the app responsive
