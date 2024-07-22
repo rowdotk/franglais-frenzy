@@ -35,7 +35,6 @@ REACT_APP_SERVER_URL=http://localhost:3001/api/v1
 ## Technical Details
 
 - The verbs are stored in a JSON file called `verbs.json` on the server, the difficulty level of each verb is assigned randomly for now.
-  - In real life, storing the verbs in a database will simplify managing performance issues like race conditions and make testing much easier.
 - Difficulty levels range from 1 to 5, the game starts with a level 1 word (easiest). If the player answers correctly, they move to a more difficult word. If they answer incorrectly, they receive an easier word.
 - Each response is logged, adjusting the difficulty level of words based on correctness. Correct answers increase the difficulty, while incorrect answers decrease it. This system ensures that, over time, difficulty levels in the database accurately reflect the challenge each word presents.
 - For testing purpose: the answers are logged in the browser console.
@@ -43,7 +42,7 @@ REACT_APP_SERVER_URL=http://localhost:3001/api/v1
 ## Future Improvements
 
 - Implement integration tests
-- Enhance CRUD operations to prevent race conditions during level optimization
+- Storing verbs in a database instead of a JSON file will simplify managing performance issues like race conditions and make testing much easier.
 - Save or cache translations to minimize API calls
 - Make the app responsive
 - Provide correct answer when the player answers incorrectly
